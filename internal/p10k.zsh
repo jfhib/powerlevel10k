@@ -1817,7 +1817,11 @@ prompt_dir() {
               (( n -= len ))
               (( --i ))
             else
-              parts[i]=$'\1'$dir[-n,-1]
+              if (( $n == 0)); then
+                parts[i]=$'\1'
+              else
+                parts[i]=$'\1'$dir[-n,-1]
+              fi
               parts[1,i-1]=()
               break
             fi
